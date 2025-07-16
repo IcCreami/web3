@@ -23,6 +23,37 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // 移动端下拉菜单处理
+    const dropdown = document.querySelector('.dropdown');
+    const businessArea = document.querySelector('.business-area');
+    
+    if (businessArea) {
+        businessArea.addEventListener('click', function(e) {
+            // 判断是否在移动端视图
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+                console.log('业务范围菜单点击 - 当前状态:', dropdown.classList.contains('active') ? '展开' : '收起');
+            }
+        });
+    }
+    
+    // 窗口大小变化时处理菜单状态
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            // 在桌面视图下，移除移动端特有的类
+            if (dropdown) {
+                dropdown.classList.remove('active');
+            }
+            
+            if (menuToggle && menuToggle.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                body.classList.remove('menu-open');
+            }
+        }
+    });
+
     // 当前页面导航高亮
     highlightCurrentPage();
     
@@ -43,22 +74,32 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 处理业务范围页面
     handleServicePage();
+    
+    // 记录移动端导航初始化完成
+    console.log('移动端导航初始化完成 - 屏幕宽度:', window.innerWidth, '像素');
 });
 
 // 高亮当前页面导航
 function highlightCurrentPage() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('.nav-links a');
-    
+    const urlParams = new URLSearchParams(window.location.search);
+    const serviceType = urlParams.get('type');
+
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         if (href === currentPage) {
             link.classList.add('active');
+        } else if (currentPage.includes('services.html') && href && href.includes('services.html')) {
+            // 检查是否包含匹配的type参数
+            if (href.includes(serviceType)) {
+                link.classList.add('active');
+            }
         } else if (!link.classList.contains('business-area')) {
             link.classList.remove('active');
         }
     });
-    
+
     // 业务范围页面特殊处理
     if (currentPage.includes('services.html')) {
         const businessLink = document.querySelector('.business-area');
