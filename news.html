@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>招贤纳士 - 深圳市冠集供应链管理有限公司</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .news-section {
+            padding: 120px 0 80px;
+        }
+        
+        .news-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .news-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .news-header h2 {
+            color: #1a73e8;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .news-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .news-card:hover .news-image img {
+            transform: scale(1.05);
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-date {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .news-title {
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .news-excerpt {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .read-more {
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: rgba(26, 115, 232, 0.1);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .read-more:hover {
+            background-color: #1a73e8;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 115, 232, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="冠集供应链" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="business-area">业务范围 <i class="fas fa-angle-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="services.html?type=chemical">危化品/普货运输</a>
+                        <a href="services.html?type=bulk">大宗散货运输</a>
+                    </div>
+                </li>
+                <li><a href="about.html">关于我们</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+                <li><a href="news.html">招贤纳士</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="news-section">
+            <div class="news-container">
+                <div class="news-header">
+                    <h2>招贤纳士</h2>
+                    <p>加入我们，共创未来</p>
+                </div>
+                <div class="news-grid">
+                    <div class="news-card fade-in-up">
+                        <div class="news-image">
+                            <img src="images/transport-logistics-products.jpg" alt="货代销售职位图片">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">全职</div>
+                            <h3 class="news-title">货代销售</h3>
+                            <p class="news-excerpt">负责公司国际物流服务的销售推广，开发新客户，维护客户关系，达成销售目标。要求具有1-3年相关行业经验，熟悉物流运输流程，有较强的沟通谈判能力。</p>
+                            <a href="job-detail.html" class="read-more">查看详情</a>
+                        </div>
+                    </div>
+                    <div class="news-card fade-in-up delay-1">
+                        <div class="news-image">
+                            <img src="images/agricultural-silo.jpg" alt="职位图片">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">暂无招聘</div>
+                            <h3 class="news-title">物流专员</h3>
+                            <p class="news-excerpt">该岗位暂无招聘需求。如果您对我们公司的其他岗位感兴趣，请查看当前开放的职位或直接与我们联系。</p>
+                            <span class="read-more" style="background-color: #e6e6e6; color: #999; cursor: default;">暂无招聘</span>
+                        </div>
+                    </div>
+                    <div class="news-card fade-in-up delay-2">
+                        <div class="news-image">
+                            <img src="images/port-de-barcelona-night.jpg" alt="职位图片">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">暂无招聘</div>
+                            <h3 class="news-title">供应链分析师</h3>
+                            <p class="news-excerpt">该岗位暂无招聘需求。如果您对我们公司的其他岗位感兴趣，请查看当前开放的职位或直接与我们联系。</p>
+                            <span class="read-more" style="background-color: #e6e6e6; color: #999; cursor: default;">暂无招聘</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>深圳市冠集供应链管理有限公司</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> 地址：深圳市福田区福华三路168号深圳国际商会中心3005室</p>
+                    <p><i class="fas fa-phone"></i> 电话：0755-82559337</p>
+                    <p><i class="fas fa-mobile-alt"></i> 手机：18682257602</p>
+                    <p><i class="fas fa-envelope"></i> 邮箱：phyllis@glory-scm.com</p>
+                    <p><i class="fab fa-qq"></i> QQ：2850711892</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 深圳市冠集供应链管理有限公司 版权所有</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 手动设置当前页面导航高亮
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === 'news.html') {
+                    link.classList.add('active');
+                } else if (!link.classList.contains('business-area')) {
+                    link.classList.remove('active');
+                }
+            });
+            
+            // 添加职位卡片动画效果
+            const newsCards = document.querySelectorAll('.news-card');
+            
+            function checkScroll() {
+                newsCards.forEach((card, index) => {
+                    const cardTop = card.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (cardTop < windowHeight * 0.85) {
+                        setTimeout(() => {
+                            card.classList.add('visible');
+                        }, index * 200);
+                    }
+                });
+            }
+            
+            // 检查初始状态
+            setTimeout(checkScroll, 100);
+            
+            // 监听滚动事件
+            window.addEventListener('scroll', checkScroll);
+        });
+    </script>
+</body>
+</html> 

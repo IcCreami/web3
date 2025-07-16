@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我们 - 深圳市冠集供应链管理有限公司</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="冠集供应链" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="business-area">业务范围 <i class="fas fa-angle-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="services.html?type=chemical">危化品/普货运输</a>
+                        <a href="services.html?type=bulk">大宗散货运输</a>
+                    </div>
+                </li>
+                <li><a href="about.html">关于我们</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+                <li><a href="news.html">招贤纳士</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="contact-hero">
+            <div class="container">
+                <h1 class="fade-in-up">联系我们</h1>
+                <p class="fade-in-up delay-1">如果您有任何问题或需求，欢迎随时与我们联系，我们将竭诚为您服务</p>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info-wrapper fade-in-left">
+                        <div class="card-base contact-info-card">
+                            <h3>联系方式</h3>
+                            <div class="contact-info-list">
+                                <div class="contact-info-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div class="content">
+                                        <h4>公司地址</h4>
+                                        <p>深圳市福田区福华三路168号深圳国际商会中心3005室</p>
+                                    </div>
+                                </div>
+                                <div class="contact-info-item">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <div class="content">
+                                        <h4>联系电话</h4>
+                                        <p>0755-82559337</p>
+                                    </div>
+                                </div>
+                                <div class="contact-info-item">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <div class="content">
+                                        <h4>手机号码</h4>
+                                        <p>18682257602</p>
+                                    </div>
+                                </div>
+                                <div class="contact-info-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <div class="content">
+                                        <h4>电子邮箱</h4>
+                                        <p>phyllis@glory-scm.com</p>
+                                    </div>
+                                </div>
+                                <div class="contact-info-item">
+                                    <i class="fab fa-qq"></i>
+                                    <div class="content">
+                                        <h4>QQ号码</h4>
+                                        <p>2850711892</p>
+                                    </div>
+                                </div>
+                                <div class="contact-info-item">
+                                    <i class="far fa-clock"></i>
+                                    <div class="content">
+                                        <h4>工作时间</h4>
+                                        <p>周一至周五 9:00-18:00</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-wrapper fade-in-right">
+                        <div class="card-base contact-form-card">
+                            <h3>在线留言</h3>
+                            <form id="contactForm">
+                                <div class="form-group">
+                                    <label for="name">您的姓名</label>
+                                    <input type="text" id="name" name="name" class="form-control" required placeholder="请输入您的姓名">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">电子邮箱</label>
+                                    <input type="email" id="email" name="email" class="form-control" required placeholder="请输入您的邮箱">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">联系电话</label>
+                                    <input type="tel" id="phone" name="phone" class="form-control" required placeholder="请输入您的联系电话">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">留言内容</label>
+                                    <textarea id="message" name="message" class="form-control" required placeholder="请输入您的留言内容"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary submit-btn">
+                                    <span>提交留言</span>
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-section fade-in-up delay-2">
+                    <div class="card-base map-card">
+                        <h3>公司位置</h3>
+                        <div class="map-container">
+                            <iframe src="https://uri.amap.com/marker?markers=114.059432,22.528664,深圳市冠集供应链管理有限公司&center=114.059432,22.528664&zoom=18" frameborder="0" scrolling="no" loading="lazy"></iframe>
+                            <div class="map-placeholder">
+                                <div class="map-load-button">
+                                    <i class="fas fa-map-marked-alt"></i>
+                                    <span>点击加载地图</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>深圳市冠集供应链管理有限公司</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> 地址：深圳市福田区福华三路168号深圳国际商会中心3005室</p>
+                    <p><i class="fas fa-phone"></i> 电话：0755-82559337</p>
+                    <p><i class="fas fa-mobile-alt"></i> 手机：18682257602</p>
+                    <p><i class="fas fa-envelope"></i> 邮箱：phyllis@glory-scm.com</p>
+                    <p><i class="fab fa-qq"></i> QQ：2850711892</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 深圳市冠集供应链管理有限公司 版权所有</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

@@ -1,0 +1,369 @@
+/* 导航栏样式重新优化 */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    height: 70px;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    transition: height 0.3s ease;
+}
+
+.company-name {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.navbar.scrolled .company-name {
+    color: #333;
+    text-shadow: none;
+}
+
+.navbar.scrolled .logo-img {
+    height: 45px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 35px;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-links li {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    padding: 6px 0;
+    letter-spacing: 0.5px;
+}
+
+/* 下拉菜单样式 */
+.dropdown {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.business-area {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: inherit;
+    font-weight: 600;
+}
+
+.business-area i {
+    font-size: 14px;
+    transition: transform 0.3s ease;
+    margin-top: 1px;
+}
+
+.dropdown:hover .business-area i {
+    transform: rotate(180deg);
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: white;
+    min-width: 200px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 100;
+}
+
+.dropdown:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-content a {
+    display: block;
+    color: #333;
+    padding: 12px 20px;
+    text-align: center;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    text-shadow: none;
+    font-size: 16px;
+}
+
+.dropdown-content a:hover {
+    background: rgba(26, 115, 232, 0.1);
+    color: #1a73e8;
+}
+
+.dropdown-content a:first-child {
+    position: relative;
+    font-weight: normal;
+    color: #333;
+    padding-bottom: 14px;
+}
+
+.dropdown-content a:first-child::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 80%;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.navbar.scrolled .nav-links a {
+    color: #333;
+    text-shadow: none;
+}
+
+.navbar.scrolled .business-area {
+    color: #333;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #1a73e8;
+    text-shadow: none;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #1a73e8;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #333;
+    transition: all 0.3s ease;
+}
+
+.navbar:not(.scrolled) .menu-toggle span {
+    background-color: white;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        height: 70px;
+    }
+    
+    .navbar.scrolled {
+        height: 60px;
+    }
+    
+    .nav-container {
+        padding: 0 15px;
+    }
+
+    .logo-img {
+        height: 40px;
+    }
+    
+    .company-name {
+        font-size: 14px;
+        display: none; /* 在手机端隐藏公司名称 */
+    }
+    
+    .navbar.scrolled .logo-img {
+        height: 35px;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+        text-align: center;
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        height: auto;
+    }
+
+    .navbar.scrolled .nav-links {
+        top: 60px;
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .nav-links li {
+        height: auto;
+        width: 100%;
+    }
+
+    .nav-links a {
+        color: #333;
+        text-shadow: none;
+        font-size: 16px;
+        padding: 12px 0;
+        display: block;
+        width: 100%;
+    }
+
+    .navbar:not(.scrolled) .nav-links a {
+        color: #333;
+    }
+    
+    /* 移动端下拉菜单样式 */
+    .dropdown {
+        height: auto;
+        width: 100%;
+    }
+    
+    .dropdown-content {
+        position: relative;
+        transform: none;
+        left: 0;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: none;
+        margin-top: 10px;
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        transition: max-height 0.3s ease;
+        width: 100%;
+    }
+    
+    .dropdown.active .dropdown-content {
+        max-height: 200px;
+        padding: 10px 0;
+    }
+    
+    .business-area {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .dropdown:hover .dropdown-content {
+        transform: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+}
+
+.navbar.hide {
+    transform: translateY(-100%);
+}
+
+.navbar.show {
+    transform: translateY(0);
+}
+
+.navbar.scrolled .logo-img {
+    height: 45px;
+}
+
+@media (max-width: 768px) {
+    .navbar.scrolled .logo-img {
+        height: 35px;
+    }
+}
