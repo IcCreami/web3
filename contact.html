@@ -16,13 +16,46 @@
             text-align: center;
             margin-top: 20px;
         }
+        .map-container {
+            position: relative;
+        }
         .map-container iframe {
             width: 100%;
             height: 100%;
             border: none;
+            transition: opacity 0.3s ease;
         }
         .map-container iframe.error + .map-fallback {
             display: block;
+        }
+        .map-loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(249, 251, 255, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            border-radius: 10px;
+        }
+        .map-loading.hidden {
+            display: none;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(26, 115, 232, 0.2);
+            border-top-color: #1a73e8;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+        @keyframes spin {
+            to {transform: rotate(360deg);}
         }
     </style>
 </head>
@@ -66,61 +99,68 @@
         <section class="contact-section">
             <div class="container">
                 <div class="contact-card fade-in">
-                            <h3>联系方式</h3>
+                    <h3>联系方式</h3>
                     <div class="contact-grid">
                         <div class="contact-item">
-                                    <i class="fas fa-map-marker-alt"></i>
+                            <i class="fas fa-map-marker-alt"></i>
                             <div>
-                                        <h4>公司地址</h4>
-                                        <p>深圳市福田区福华三路168号深圳国际商会中心3005室</p>
-                                    </div>
-                                </div>
+                                <h4>公司地址</h4>
+                                <p>深圳市福田区福华三路168号深圳国际商会中心3005室</p>
+                            </div>
+                        </div>
                         <div class="contact-item">
-                                    <i class="fas fa-phone-alt"></i>
+                            <i class="fas fa-phone-alt"></i>
                             <div>
-                                        <h4>联系电话</h4>
-                                        <p>0755-82559337</p>
-                                    </div>
-                                </div>
+                                <h4>联系电话</h4>
+                                <p>0755-82559337</p>
+                            </div>
+                        </div>
                         <div class="contact-item">
-                                    <i class="fas fa-mobile-alt"></i>
+                            <i class="fas fa-mobile-alt"></i>
                             <div>
-                                        <h4>手机号码</h4>
-                                        <p>18682257602</p>
-                                    </div>
-                                </div>
+                                <h4>手机号码</h4>
+                                <p>18682257602</p>
+                            </div>
+                        </div>
                         <div class="contact-item">
-                                    <i class="fas fa-envelope"></i>
+                            <i class="fas fa-envelope"></i>
                             <div>
-                                        <h4>电子邮箱</h4>
-                                        <p>phyllis@glory-scm.com</p>
-                                    </div>
-                                </div>
+                                <h4>电子邮箱</h4>
+                                <p>phyllis@glory-scm.com</p>
+                            </div>
+                        </div>
                         <div class="contact-item">
-                                    <i class="fab fa-qq"></i>
+                            <i class="fab fa-qq"></i>
                             <div>
-                                        <h4>QQ号码</h4>
-                                        <p>2850711892</p>
-                                    </div>
-                                </div>
+                                <h4>QQ号码</h4>
+                                <p>2850711892</p>
+                            </div>
+                        </div>
                         <div class="contact-item">
-                                    <i class="far fa-clock"></i>
+                            <i class="far fa-clock"></i>
                             <div>
-                                        <h4>工作时间</h4>
-                                        <p>周一至周五 9:00-18:00</p>
+                                <h4>工作时间</h4>
+                                <p>周一至周五 9:00-18:00</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="map-section fade-in delay-2">
-                        <h3>公司位置</h3>
-                        <div class="map-container">
-                        <iframe id="companyMap" src="https://uri.amap.com/marker?markers=114.059432,22.528664,深圳市冠集供应链管理有限公司&center=114.059432,22.528664&zoom=18" frameborder="0" scrolling="no" loading="lazy" onerror="this.classList.add('error')"></iframe>
+                    <h3>公司位置</h3>
+                    <div class="map-container">
+                        <div id="mapLoading" class="map-loading">
+                            <div class="spinner"></div>
+                            <p>地图加载中...</p>
+                        </div>
+                        <iframe id="companyMap" src="https://uri.amap.com/marker?markers=114.059432,22.528664,深圳市冠集供应链管理有限公司&center=114.059432,22.528664&zoom=18" frameborder="0" scrolling="no" loading="lazy"></iframe>
                         <div class="map-fallback">
                             <h4>公司地址</h4>
                             <p>深圳市福田区福华三路168号深圳国际商会中心3005室</p>
                             <p>坐标：114.059432, 22.528664</p>
+                            <a href="https://uri.amap.com/marker?markers=114.059432,22.528664,深圳市冠集供应链管理有限公司&center=114.059432,22.528664&zoom=18" target="_blank" class="btn btn-primary" style="margin-top: 15px;">
+                                <i class="fas fa-map-marked-alt"></i> 在高德地图中查看
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -142,16 +182,10 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 深圳市冠集供应链管理有限公司 版权所有</p>
+            <p>&copy; 2025 深圳市冠集供应链管理有限公司 版权所有</p>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
-    <script>
-        // 检测地图加载错误
-        document.getElementById('companyMap').addEventListener('error', function() {
-            this.classList.add('error');
-        });
-    </script>
 </body>
 </html> 
