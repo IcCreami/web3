@@ -122,22 +122,24 @@
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translateX(-50%) translateY(10px);
+    transform: translateX(-50%) translateY(20px);
     background: white;
     min-width: 200px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    padding: 10px 0;
+    padding: 0;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     z-index: 100;
+    overflow: hidden;
 }
 
 .dropdown:hover .dropdown-content {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
+    padding: 10px 0;
 }
 
 .dropdown-content a {
@@ -145,10 +147,11 @@
     color: #333;
     padding: 12px 20px;
     text-align: center;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     font-weight: 500;
     text-shadow: none;
-    font-size: 16px;
+    font-size: 15px;
+    position: relative;
 }
 
 .dropdown-content a:hover {
@@ -156,22 +159,11 @@
     color: #1a73e8;
 }
 
-.dropdown-content a:first-child {
-    position: relative;
-    font-weight: normal;
-    color: #333;
-    padding-bottom: 14px;
+.dropdown-content a:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.dropdown-content a:first-child::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 10%;
-    width: 80%;
-    height: 1px;
-    background: rgba(0, 0, 0, 0.1);
-}
+/* 下拉菜单子项样式统一 */
 
 .navbar.scrolled .nav-links a {
     color: #333;
@@ -230,11 +222,11 @@
     .navbar {
         height: 70px;
     }
-    
+
     .navbar.scrolled {
         height: 60px;
     }
-    
+
     .nav-container {
         padding: 0 15px;
     }
@@ -242,12 +234,12 @@
     .logo-img {
         height: 40px;
     }
-    
+
     .company-name {
         font-size: 14px;
         display: none; /* 在手机端隐藏公司名称 */
     }
-    
+
     .navbar.scrolled .logo-img {
         height: 35px;
     }
@@ -269,6 +261,7 @@
         transition: all 0.3s ease;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         height: auto;
+        z-index: 999;
     }
 
     .navbar.scrolled .nav-links {
@@ -297,13 +290,13 @@
     .navbar:not(.scrolled) .nav-links a {
         color: #333;
     }
-    
+
     /* 移动端下拉菜单样式 */
     .dropdown {
         height: auto;
         width: 100%;
     }
-    
+
     .dropdown-content {
         position: static;
         transform: none;
@@ -320,7 +313,7 @@
         border-radius: 5px;
         background-color: #f9f9f9;
     }
-    
+
     .dropdown.active .dropdown-content {
         visibility: visible;
         max-height: 200px;
@@ -328,12 +321,23 @@
         margin-top: 10px;
         margin-bottom: 10px;
     }
-    
+
+    .dropdown-content a {
+        padding: 12px 15px;
+        font-size: 15px;
+        text-align: center;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .dropdown-content a:last-child {
+        border-bottom: none;
+    }
+
     .business-area {
         justify-content: center;
         width: 100%;
     }
-    
+
     .dropdown:hover .dropdown-content {
         transform: none;
     }

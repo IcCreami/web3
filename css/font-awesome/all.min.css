@@ -1,0 +1,40 @@
+/* 简化版Font Awesome CSS，仅包含网站使用的图标 */
+.fas, .far, .fab {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+}
+
+/* 使用 Unicode 符号替代字体图标 */
+.fa-angle-down:before { content: "▼"; }
+.fa-map-marker-alt:before { content: "📍"; }
+.fa-phone-alt:before, .fa-phone:before { content: "📞"; }
+.fa-mobile-alt:before { content: "📱"; }
+.fa-envelope:before { content: "✉️"; }
+.fa-qq:before { content: "Q"; }
+.fa-clock:before { content: "🕒"; }
+.fa-map-marked-alt:before { content: "🗺️"; }
+.fa-chevron-left:before { content: "◀"; }
+.fa-chevron-right:before { content: "▶"; }
+.fa-calendar-alt:before { content: "📅"; }
+.fa-users:before { content: "👥"; }
+.fa-money-bill-wave:before { content: "💵"; }
+.fa-ship:before { content: "🚢"; }
+.fa-award:before { content: "🏆"; }
+.fa-headset:before { content: "🎧"; }
+.fa-globe:before { content: "🌎"; }
+.fa-shield-alt:before { content: "🛡️"; }
+.fa-paper-plane:before { content: "✈️"; }
+.fa-spinner:before { content: "⏳"; }
+.fa-spinner.fa-spin { 
+  animation: fa-spin 2s infinite linear; 
+}
+
+@keyframes fa-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+} 

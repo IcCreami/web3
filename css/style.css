@@ -1217,7 +1217,7 @@ footer {
 }
 
 .contact-hero p {
-    color: #666;
+    color: white;
     font-size: 1.2em;
     max-width: 700px;
     margin: 0 auto;
@@ -1227,135 +1227,97 @@ footer {
     padding: 60px 0;
 }
 
-.contact-content {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+/* 简化后的联系页面样式 */
+.contact-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 40px;
     margin-bottom: 40px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.contact-info-wrapper, .contact-form-wrapper {
-    width: 100%;
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
-.contact-info-card {
-    padding: 30px;
-    height: 100%;
-}
-
-.contact-info-card h3 {
+.contact-card h3, .map-section h3 {
     color: #1a73e8;
     font-size: 1.8em;
     margin-bottom: 25px;
     position: relative;
+    text-align: center;
 }
 
-.contact-info-card h3::after {
+.contact-card h3::after, .map-section h3::after {
     content: '';
     position: absolute;
     bottom: -10px;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 50px;
     height: 3px;
     background: linear-gradient(to right, #1a73e8, #0d47a1);
 }
 
-.contact-info-list {
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
     margin-top: 30px;
 }
 
-.contact-info-item {
+.contact-item {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 25px;
+    padding: 20px;
+    background-color: #f9fbff;
+    border-radius: 10px;
+    transition: all 0.3s ease;
 }
 
-.contact-info-item i {
+.contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.contact-item i {
     color: #1a73e8;
-    font-size: 20px;
+    font-size: 24px;
     margin-right: 15px;
     margin-top: 5px;
-    width: 20px;
+    width: 24px;
+    text-align: center;
 }
 
-.contact-info-item .content {
-    flex: 1;
-}
-
-.contact-info-item h4 {
+.contact-item h4 {
     font-size: 1.1em;
     margin-bottom: 5px;
     color: #333;
 }
 
-.contact-info-item p {
+.contact-item p {
     color: #666;
     line-height: 1.6;
 }
 
-.contact-form-card {
-    padding: 30px;
-    height: 100%;
+.map-section {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 40px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.contact-form-card h3 {
-    color: #1a73e8;
-    font-size: 1.8em;
-    margin-bottom: 25px;
-    position: relative;
-}
-
-.contact-form-card h3::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 50px;
-    height: 3px;
-    background: linear-gradient(to right, #1a73e8, #0d47a1);
-}
-
-#contactForm {
-    margin-top: 30px;
-}
-
-.submit-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
-    width: 100%;
-}
-
-.submit-btn i {
-    font-size: 1em;
-}
-
-.map-card {
-    padding: 30px;
-}
-
-.map-card h3 {
-    color: #1a73e8;
-    font-size: 1.8em;
-    margin-bottom: 25px;
-    position: relative;
-}
-
-.map-card h3::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 50px;
-    height: 3px;
-    background: linear-gradient(to right, #1a73e8, #0d47a1);
+.map-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
 .map-container {
     position: relative;
-    height: 400px;
+    height: 450px;
     border-radius: 10px;
     overflow: hidden;
     margin-top: 20px;
@@ -1365,49 +1327,32 @@ footer {
     width: 100%;
     height: 100%;
     border: none;
-    display: none;
 }
 
-.map-placeholder {
-    width: 100%;
-    height: 100%;
-    background-color: #f8f9fa;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border-radius: 10px;
+/* 简化的动画效果 */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.map-load-button {
-    text-align: center;
-    color: #1a73e8;
-    padding: 20px;
-    background-color: rgba(26, 115, 232, 0.1);
-    border-radius: 10px;
-    transition: all 0.3s ease;
+.fade-in.visible, .delay-1.visible, .delay-2.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.map-load-button:hover {
-    background-color: rgba(26, 115, 232, 0.2);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(26, 115, 232, 0.2);
+.delay-1 {
+    transition-delay: 0.2s;
 }
 
-.map-load-button i {
-    font-size: 2em;
-    margin-bottom: 10px;
-    display: block;
+.delay-2 {
+    transition-delay: 0.4s;
 }
 
-.map-load-button span {
-    font-size: 1.2em;
-    font-weight: 500;
-}
-
+/* 响应式调整 */
 @media (max-width: 992px) {
-    .contact-content {
-        grid-template-columns: 1fr;
+    .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -1428,10 +1373,13 @@ footer {
         padding: 40px 0;
     }
     
-    .contact-info-card, 
-    .contact-form-card, 
-    .map-card {
+    .contact-card, .map-section {
         padding: 20px;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
     
     .map-container {

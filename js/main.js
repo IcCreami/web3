@@ -1,5 +1,6 @@
 // 主要JavaScript文件
 document.addEventListener('DOMContentLoaded', function() {
+    try {
     // 导航栏滚动效果
     window.addEventListener('scroll', function() {
         const navbar = document.querySelector('.navbar');
@@ -33,7 +34,22 @@ document.addEventListener('DOMContentLoaded', function() {
             if (window.innerWidth <= 768) {
                 e.preventDefault();
                 dropdown.classList.toggle('active');
-                console.log('业务范围菜单点击 - 当前状态:', dropdown.classList.contains('active') ? '展开' : '收起');
+                
+                // 添加平滑过渡效果
+                const dropdownContent = dropdown.querySelector('.dropdown-content');
+                if (dropdownContent) {
+                    if (dropdown.classList.contains('active')) {
+                        // 展开时滚动到可见位置
+                        setTimeout(() => {
+                                try {
+                            dropdownContent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                                } catch (error) {
+                                    // 兼容不支持平滑滚动的浏览器
+                                    dropdownContent.scrollIntoView();
+                                }
+                        }, 300);
+                    }
+                }
             }
         });
     }
@@ -61,23 +77,107 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     
     // 初始化轮播图
+        if (document.querySelector('.slider')) {
     initSlider();
+        }
     
     // 初始化联系页面功能
+        if (document.querySelector('.contact-section')) {
     initContactPage();
+        }
     
     // 初始化数字统计动画
+        if (document.querySelector('.stats-section')) {
     initNumberCounter();
+        }
     
     // 处理页面内锚点平滑滚动
     handleSmoothScroll();
     
     // 处理业务范围页面
+        if (window.location.pathname.includes('services.html')) {
     handleServicePage();
+        }
     
-    // 记录移动端导航初始化完成
-    console.log('移动端导航初始化完成 - 屏幕宽度:', window.innerWidth, '像素');
+    // 优化优势卡片结构
+        if (document.querySelectorAll('.advantage-card').length > 0) {
+    optimizeAdvantageCards();
+        }
+        
+        // 检查地图加载状态
+        checkMapStatus();
+    } catch (error) {
+        console.error('初始化错误:', error);
+    }
 });
+
+// 检查地图加载状态
+function checkMapStatus() {
+    const mapIframe = document.getElementById('companyMap');
+    if (mapIframe) {
+        // 检查地图是否加载成功
+        mapIframe.addEventListener('load', function() {
+            console.log('地图加载成功');
+        });
+        
+        mapIframe.addEventListener('error', function() {
+            console.log('地图加载失败，显示备用信息');
+            this.classList.add('error');
+        });
+    }
+}
+
+// 优化优势卡片结构，确保图片底部对齐
+function optimizeAdvantageCards() {
+    try {
+    const advantageCards = document.querySelectorAll('.advantage-card');
+    
+    advantageCards.forEach((card, index) => {
+        // 跳过第一个卡片(合规性与资质保障)
+        if (index === 0) return;
+        
+        // 获取卡片中的所有内容元素，除了图片和按钮
+        const cardContent = document.createElement('div');
+        cardContent.className = 'card-content';
+        
+        // 将图片和按钮之前的所有元素移到内容容器中
+        const image = card.querySelector('.advantage-image');
+        const button = card.querySelector('.btn-primary');
+        
+        // 临时存储所有子元素
+        const children = Array.from(card.childNodes);
+        
+        // 移动元素到内容容器
+        children.forEach(child => {
+            // 如果不是图片容器或按钮，则移动到内容容器
+            if (child !== image && child !== button && 
+                !(child.classList && (child.classList.contains('advantage-image') || child.classList.contains('btn-primary')))) {
+                cardContent.appendChild(child.cloneNode(true));
+            }
+        });
+        
+        // 清空卡片
+        while (card.firstChild) {
+            card.removeChild(card.firstChild);
+        }
+        
+        // 重新添加元素，保持正确顺序
+        card.appendChild(cardContent);
+        
+        // 添加图片容器
+        if (image) {
+            card.appendChild(image);
+        }
+        
+        // 添加按钮(如果有)
+        if (button) {
+            card.appendChild(button);
+        }
+    });
+    } catch (error) {
+        console.error('优化卡片结构错误:', error);
+    }
+}
 
 // 高亮当前页面导航
 function highlightCurrentPage() {
@@ -85,7 +185,7 @@ function highlightCurrentPage() {
     const navLinks = document.querySelectorAll('.nav-links a');
     const urlParams = new URLSearchParams(window.location.search);
     const serviceType = urlParams.get('type');
-
+    
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         if (href === currentPage) {
@@ -99,7 +199,7 @@ function highlightCurrentPage() {
             link.classList.remove('active');
         }
     });
-
+    
     // 业务范围页面特殊处理
     if (currentPage.includes('services.html')) {
         const businessLink = document.querySelector('.business-area');
@@ -251,73 +351,21 @@ function initSlider() {
 
 // 初始化联系页面功能
 function initContactPage() {
-    // 阻止页面自动滚动
-    setTimeout(function() {
-        window.scrollTo(0, 0);
-    }, 100);
+    try {
+        // 防止页面自动滚动
+        setTimeout(() => window.scrollTo(0, 0), 100);
     
-    // 表单提交处理
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // 这里只是模拟表单提交
-            const submitBtn = this.querySelector('.submit-btn');
-            const originalText = submitBtn.innerHTML;
-            
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 提交中...';
-            submitBtn.disabled = true;
-            
-            // 模拟延迟
-            setTimeout(() => {
-                alert('您的留言已成功提交，我们会尽快与您联系！');
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-                contactForm.reset();
-            }, 1500);
-        });
-    }
-    
-    // 地图加载处理
-    const mapContainer = document.querySelector('.map-container');
-    if (mapContainer) {
-        const iframe = mapContainer.querySelector('iframe');
-        const mapPlaceholder = mapContainer.querySelector('.map-placeholder');
-        
-        if (iframe && mapPlaceholder) {
-            mapPlaceholder.addEventListener('click', function() {
-                iframe.style.display = 'block';
-                mapPlaceholder.style.display = 'none';
-            });
-        }
-    }
-    
-    // 触发联系页面动画
-    const contactHero = document.querySelector('.contact-hero');
-    if (contactHero) {
+        // 触发页面动画
         setTimeout(() => {
-            const heroElements = contactHero.querySelectorAll('.fade-in-up');
-            heroElements.forEach(el => {
-                el.classList.add('visible');
-            });
+            document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
             
-            // 延迟触发内容区域动画
+            // 延迟触发带延迟的元素
             setTimeout(() => {
-                const contentElements = document.querySelectorAll('.contact-content .fade-in-left, .contact-content .fade-in-right');
-                contentElements.forEach(el => {
-                    el.classList.add('visible');
-                });
-                
-                // 再延迟触发地图区域动画
-                setTimeout(() => {
-                    const mapElements = document.querySelectorAll('.map-section.fade-in-up');
-                    mapElements.forEach(el => {
-                        el.classList.add('visible');
-                    });
-                }, 300);
+                document.querySelectorAll('.delay-1, .delay-2').forEach(el => el.classList.add('visible'));
             }, 200);
         }, 100);
+    } catch (error) {
+        console.error('初始化联系页面错误:', error);
     }
 } 
 
