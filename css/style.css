@@ -1153,7 +1153,7 @@ footer {
     }
 }
 
-/* 合规性与资质保障卡片 */
+/* 危化品优势卡片样式 */
 .advantage-card .advantage-header {
     display: flex;
     align-items: center;
@@ -1259,6 +1259,14 @@ footer {
     width: 50px;
     height: 3px;
     background: linear-gradient(to right, #1a73e8, #0d47a1);
+}
+
+.contact-department-note {
+    text-align: center;
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    padding: 0 20px;
 }
 
 .contact-grid {

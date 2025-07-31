@@ -121,14 +121,14 @@ function checkMapStatus() {
         const mapTimeout = setTimeout(() => {
             if (mapLoading) mapLoading.classList.add('hidden');
             mapIframe.classList.add('error');
-            console.log('地图加载超时，显示备用信息');
+            // 地图加载超时，显示备用信息
         }, 10000); // 10秒超时
         
         // 检查地图是否加载成功
         mapIframe.addEventListener('load', function() {
             clearTimeout(mapTimeout);
             if (mapLoading) mapLoading.classList.add('hidden');
-            console.log('地图加载成功');
+                            // 地图加载成功
         });
         
         // 处理地图加载错误
@@ -136,7 +136,7 @@ function checkMapStatus() {
             clearTimeout(mapTimeout);
             if (mapLoading) mapLoading.classList.add('hidden');
             this.classList.add('error');
-            console.log('地图加载失败，显示备用信息');
+            // 地图加载失败，显示备用信息
         });
         
         // 处理网络状态变化
@@ -148,7 +148,7 @@ function checkMapStatus() {
                 }
                 mapIframe.classList.remove('error');
                 mapIframe.src = mapIframe.src;
-                console.log('网络已恢复，尝试重新加载地图');
+                // 网络已恢复，尝试重新加载地图
             }
         });
     }
@@ -160,7 +160,7 @@ function optimizeAdvantageCards() {
     const advantageCards = document.querySelectorAll('.advantage-card');
     
     advantageCards.forEach((card, index) => {
-        // 跳过第一个卡片(合规性与资质保障)
+        // 优化危化品优势卡片
         if (index === 0) return;
         
         // 获取卡片中的所有内容元素，除了图片和按钮

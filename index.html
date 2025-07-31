@@ -135,14 +135,14 @@
                         <div class="stat-title">服务客户<sup>+</sup>次</div>
                     </div>
                     <div class="stat-item fade-in-up delay-2">
-                        <div class="stat-icon"><i class="fas fa-money-bill-wave"></i></div>
-                        <div class="stat-number" data-count="500">0</div>
-                        <div class="stat-title">注册资金<sup>万</sup></div>
+                        <div class="stat-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="stat-number" data-count="200">0</div>
+                        <div class="stat-title">覆盖港口<sup>+</sup></div>
                     </div>
                     <div class="stat-item fade-in-up delay-3">
                         <div class="stat-icon"><i class="fas fa-ship"></i></div>
                         <div class="stat-number" data-count="1000">0</div>
-                        <div class="stat-title">运输物流<sup>+</sup>艘</div>
+                        <div class="stat-title">运输物流<sup>+</sup>TEU</div>
                     </div>
                 </div>
             </div>
@@ -205,11 +205,7 @@
             <div class="footer-info">
                 <h3>深圳市冠集供应链管理有限公司</h3>
                 <div class="footer-contact">
-                    <p><i class="fas fa-map-marker-alt"></i> 地址：深圳市福田区福华三路168号深圳国际商会中心3005室</p>
-                    <p><i class="fas fa-phone"></i> 电话：0755-82559337</p>
-                    <p><i class="fas fa-mobile-alt"></i> 手机：18682257602</p>
-                    <p><i class="fas fa-envelope"></i> 邮箱：phyllis@glory-scm.com</p>
-                    <p><i class="fab fa-qq"></i> QQ：2850711892</p>
+                    <!-- 联系方式由 js/website-data.js 动态加载 -->
                 </div>
             </div>
         </div>
@@ -218,6 +214,15 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/website-data.js?v=2.2"></script>
+    <script src="js/content-loader.js?v=2.2"></script>
+    <script src="js/main.js?v=2.2"></script>
+    <script>
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 让content-loader处理图标更新
+        });
+    </script>
+
 </body>
 </html> 
